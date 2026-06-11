@@ -1,12 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-
-
-
-
-
-app.MapGet("/utepbergenovardak8_gmail_com", (string x, string y) =>
+app.MapGet("/utepbergenovardak8_gmail_com", (string? x, string? y) =>
 {
     int lcm = 0;
     if (!(int.TryParse(x, out int xNum) && int.TryParse(y, out int yNum)))
