@@ -3,8 +3,8 @@ var app = builder.Build();
 
 app.MapGet("/utepbergenovardak8_gmail_com", (string? x, string? y) =>
 {
-    int lcm = 0;
-    if (!(int.TryParse(x, out int xNum) && int.TryParse(y, out int yNum)))
+    long lcm = 0;
+    if (!(long.TryParse(x, out long xNum) && long.TryParse(y, out long yNum)))
     {
     return "NaN";
     }
@@ -12,7 +12,7 @@ app.MapGet("/utepbergenovardak8_gmail_com", (string? x, string? y) =>
     bool areNatural = xNum > 0 && yNum > 0;
     if (areNatural)
     {
-        for (int i = Math.Max(xNum,yNum); i <= xNum*yNum; i++)
+        for (long i = Math.Max(xNum,yNum); i <= xNum*yNum; i++)
     {
         if (i % xNum == 0 && i % yNum == 0)
         {
