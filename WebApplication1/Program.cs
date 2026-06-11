@@ -17,6 +17,7 @@ app.MapGet("/utepbergenovardak8_gmail_com", (string? x, string? y) =>
         if (xNum % i == 0 && yNum % i == 0)
         {
             lcm = i;
+            break;
         }
     }
     return (xNum*yNum/lcm).ToString();
