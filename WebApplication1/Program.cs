@@ -12,15 +12,14 @@ app.MapGet("/utepbergenovardak8_gmail_com", (string? x, string? y) =>
     bool areNatural = xNum > 0 && yNum > 0;
     if (areNatural)
     {
-        for (long i = Math.Max(xNum,yNum); i <= xNum*yNum; i++)
+        for (long i = xNum; i > 0; i--)
     {
-        if (i % xNum == 0 && i % yNum == 0)
+        if (xNum % i == 0 && yNum % i == 0)
         {
             lcm = i;
-            break;
         }
     }
-    return lcm.ToString();
+    return (xNum*yNum/lcm).ToString();
     }
     return "NaN";
     
