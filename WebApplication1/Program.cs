@@ -1,10 +1,12 @@
+using System.Numerics;
+
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 
 app.MapGet("/utepbergenovardak8_gmail_com", (string? x, string? y) =>
 {
-    if (!(long.TryParse(x, out long xNum) && long.TryParse(y, out long yNum)))
+    if (!(BigInteger.TryParse(x, out BigInteger xNum) && BigInteger.TryParse(y, out BigInteger yNum)))
     {
     return "NaN";
     }
@@ -12,16 +14,16 @@ app.MapGet("/utepbergenovardak8_gmail_com", (string? x, string? y) =>
     bool areNatural = xNum > 0 && yNum > 0;
     if (areNatural)
     {
-        long a = xNum;
-        long b = yNum;
+        BigInteger a = xNum;
+        BigInteger b = yNum;
         while (b != 0)
         {
-            long c = b;
+            BigInteger c = b;
             b = a % b;
             a = c;
         }
-
-    return (xNum*yNum/a).ToString();
+    BigInteger result = xNum*yNum/a;
+    return result.ToString();
     }
     return "NaN";
     
