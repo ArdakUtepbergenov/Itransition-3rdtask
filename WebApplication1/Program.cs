@@ -1,9 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
+
 app.MapGet("/utepbergenovardak8_gmail_com", (string? x, string? y) =>
 {
-    long lcm = 0;
     if (!(long.TryParse(x, out long xNum) && long.TryParse(y, out long yNum)))
     {
     return "NaN";
@@ -12,15 +12,16 @@ app.MapGet("/utepbergenovardak8_gmail_com", (string? x, string? y) =>
     bool areNatural = xNum > 0 && yNum > 0;
     if (areNatural)
     {
-        for (long i = xNum; i > 0; i--)
-    {
-        if (xNum % i == 0 && yNum % i == 0)
+        long minNum = xNum;
+        long maxNum = yNum;
+        while (maxNum != 0)
         {
-            lcm = i;
-            break;
+            long c = maxNum;
+            maxNum = minNum % maxNum;
+            minNum = c;
         }
-    }
-    return (xNum*yNum/lcm).ToString();
+
+    return (xNum*yNum/minNum).ToString();
     }
     return "NaN";
     
